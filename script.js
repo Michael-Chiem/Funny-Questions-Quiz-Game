@@ -82,6 +82,35 @@ function startTimer() {
 }, 1000);
 }
 
+function endQuiz() {
+    clearInterval(timer);
+    showScore();
+    updateHighestScores();
+    displayHighScores();
+}
+
+function showScore() {
+questionElement.textContent = 'Quiz completed, ' + playerName + '! Your score is ' + score;
+optionContainer.innerHTML = '';
+scoreElemnt.textContent = 'Your Score: ' + score;
+
+}
+
+function updateHighestScores() {
+    highestScores.push({ playerName: playerName, score: score });
+    highestScores.sort(function(a,b) {
+        return b.score - a.score;
+    });
+}
+
+function displayHighScores() {
+    higheScoreTable.innerHTML = '<tr><th>Player Name</th><th>Score</th></tr>';
+    highestScores.forEach(function(entry) {
+        var row =document.createElement('tr');
+        HTMLTableRowElement.innerHTML = '<th>' + (entry.playerName || 'Your-Name-Go-Here') + '</td><td>' + entry.score + '</td>';
+        higheScoreTable.appendChild(row);
+    });
+}
 
 
 
