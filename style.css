@@ -1,11 +1,10 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    color: white;
 }
 
 .name {
-    color: red;
+    color: #003366; /* Matching font color */
 }
 
 .quiz-container {
@@ -29,16 +28,16 @@ button {
     padding: 8px 16px;
     font-size: 16px;
     cursor: pointer;
-    background-color: darkcyan;
+    background-color: #003366; /* Matching button color */
     color: white;
     border: none;
     border-radius: 4px;
 }
 
 button:hover {
-    background-color: #008b8b;
+    background-color: #001a33; /* Slightly darker on hover */
 }
 
 .quiz-container:nth-child(odd) {
-    background-color: black;
+    background-color: #3333;
 }

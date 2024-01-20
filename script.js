@@ -3,7 +3,27 @@ var quizData = [
         question: "What do you call a fish with no eyes?",
         options: ["Eyeless Fish", "Blindfish", "Noeye Trout", "Fish"],
         correctAnswer: "Blindfish",
-    }
+    },
+
+    {
+        question: "Why did the scarecrow become a successful motivation speaker?",
+        options: ["Because he was outstanding in his field", "Because crows love inspirational quotes", "Because he knew hot to stalk about success", "Because he was filled with hay-voc"],
+        correctAnswer: "Because he was outstanding in his field",
+    },
+
+    {
+        question: "How does a penguin build it house?",
+        options: ["By sliding down the ice with a blueprint", "By ordering it online from the South Pole Home Depot", "Igloos it together", "By hiring a professional penguin architect"],
+        correctAnswer: "Igloos it together",
+    },
+
+    {
+        question: "What is vampire's favority fruit?",
+        options: ["Blood Orange", "Bat Berry", "Fangtastic Grape", "Vege-bite"],
+        correctAnswer: "Blood Orange",
+    },
+
+
 ];
 
 var currentQuestionIndex = 0;
