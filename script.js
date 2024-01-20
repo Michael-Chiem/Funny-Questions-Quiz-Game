@@ -213,6 +213,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+// Starting play music.
+
 document.addEventListener("DOMContentLoaded", function() {
     var audio = document.getElementById("background-audio");
     var button = document.getElementById("next-button");
