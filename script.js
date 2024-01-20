@@ -147,7 +147,7 @@ function endQuiz() {
     showScore();
     updateHighestScores();
     displayHighScores();
-    secondsPerQuestion = 40;
+    secondsPerQuestion = 30;
     startTimer();
 }
 
