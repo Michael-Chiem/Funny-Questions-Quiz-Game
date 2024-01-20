@@ -26,4 +26,73 @@ function startQuiz() {
     currentQuestionIdex = 0;
     score = 0;
     playerName = playerNameInput.value || 'Your-Name-Go-Here';
+    showQuestion();
+    startTimer();
 }
+
+function showQuestion() {
+    var currentQuestion = quizData[currentQuestionIdex];
+    if(currentQuestion) {
+        questionElement.textContent = currentQuestion.question;
+        renderOptions(currentQuestion.options);
+    } else {
+        endQuiz();
+    }
+}
+
+function renderOptions(options) {
+    optionContainer.innerHTML = '';
+    options.forEach(function(option, index) {
+        var button = document.createElement('button');
+        button.textContent = options;
+        button.addEventListener('click', function() {
+            checkAnswer(option);
+        });
+        optionContainer.appendChild(button);
+        
+    });
+}
+
+function checkAnswer(selectedOption) {
+    var currentQuestion = quizData[currentQuestionIdex];
+    if (selectedOption == currentQuestion.correctAnswer) {
+        score++;
+    } else {
+        secondsPerQuestions -= 3;
+    }
+
+    currentQuestionIdex++;
+    if (currentQuestionIdex < quizData.length) {
+        showQuestion();
+    } else {
+        endQuiz();
+    }
+}
+
+function startTimer() {
+    timer = setInterval(function() {
+        secondsPerQuestions--;
+
+        if (secondsPerQuestions >= 0) {
+            timerElement.textContent = secondsPerQuestions;
+    } else {
+        clearInterval(timer);
+        endQuiz();
+    }
+}, 1000);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
