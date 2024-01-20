@@ -1,20 +1,20 @@
 var quizData = [
     {
         question: "What do you call a fish with no eyes?",
-        option: ["Eyeless Fish", "Blidfish", "Noeye Trout", "Fish"],
-        correctAnswer: "Blidfish",
+        options: ["Eyeless Fish", "Blindfish", "Noeye Trout", "Fish"],
+        correctAnswer: "Blindfish",
     }
 ];
 
-var currentQuestionIdex = 0;
+var currentQuestionIndex = 0;
 var score = 0;
 var playerName = '';
 var highestScores = [];
 
 var timer;
-var secondsPerQuestions = 40;
+var secondsPerQuestion = 40;
 
-var questionElement = document.getElementById('questions');
+var questionElement = document.getElementById('question');
 var optionContainer = document.getElementById('options-container');
 var timerElement = document.getElementById('time');
 var scoreElemnt = document.getElementById('score');
@@ -23,7 +23,7 @@ var higheScoreTable = document.getElementById('high-score-table');
 var nextButton = document.getElementById('next-button');
 
 function startQuiz() {
-    currentQuestionIdex = 0;
+    currentQuestionIndex = 0;
     score = 0;
     playerName = playerNameInput.value || 'Your-Name-Go-Here';
     showQuestion();
@@ -31,7 +31,7 @@ function startQuiz() {
 }
 
 function showQuestion() {
-    var currentQuestion = quizData[currentQuestionIdex];
+    var currentQuestion = quizData[currentQuestionIndex];
     if(currentQuestion) {
         questionElement.textContent = currentQuestion.question;
         renderOptions(currentQuestion.options);
@@ -44,7 +44,7 @@ function renderOptions(options) {
     optionContainer.innerHTML = '';
     options.forEach(function(option, index) {
         var button = document.createElement('button');
-        button.textContent = options;
+        button.textContent = option;
         button.addEventListener('click', function() {
             checkAnswer(option);
         });
@@ -54,15 +54,15 @@ function renderOptions(options) {
 }
 
 function checkAnswer(selectedOption) {
-    var currentQuestion = quizData[currentQuestionIdex];
-    if (selectedOption == currentQuestion.correctAnswer) {
+    var currentQuestion = quizData[currentQuestionIndex];
+    if (selectedOption === currentQuestion.correctAnswer) {
         score++;
     } else {
-        secondsPerQuestions -= 3;
+        secondsPerQuestion -= 3;
     }
 
-    currentQuestionIdex++;
-    if (currentQuestionIdex < quizData.length) {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < quizData.length) {
         showQuestion();
     } else {
         endQuiz();
@@ -71,10 +71,10 @@ function checkAnswer(selectedOption) {
 
 function startTimer() {
     timer = setInterval(function() {
-        secondsPerQuestions--;
+        secondsPerQuestion--;
 
-        if (secondsPerQuestions >= 0) {
-            timerElement.textContent = secondsPerQuestions;
+        if (secondsPerQuestion >= 0) {
+            timerElement.textContent = secondsPerQuestion;
     } else {
         clearInterval(timer);
         endQuiz();
@@ -106,11 +106,15 @@ function updateHighestScores() {
 function displayHighScores() {
     higheScoreTable.innerHTML = '<tr><th>Player Name</th><th>Score</th></tr>';
     highestScores.forEach(function(entry) {
-        var row =document.createElement('tr');
-        HTMLTableRowElement.innerHTML = '<th>' + (entry.playerName || 'Your-Name-Go-Here') + '</td><td>' + entry.score + '</td>';
+        var row = document.createElement('tr');
+        row.innerHTML = '<th>' + (entry.playerName || 'Your-Name-Go-Here') + '</td><td>' + entry.score + '</td>';
         higheScoreTable.appendChild(row);
     });
 }
+
+nextButton.addEventListener('click', startQuiz);
+
+displayHighScores();
 
 
 
