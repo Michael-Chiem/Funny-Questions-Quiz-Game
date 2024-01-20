@@ -4,7 +4,17 @@ body {
 }
 
 .name {
-    color: #003366; /* Matching font color */
+    color: #003366;
+}
+
+.donation {
+    display: flex;
+    justify-content: end;
+    font-size: 10px;
+}
+
+.donation a {
+    margin-left: 5px;
 }
 
 .quiz-container {
@@ -28,14 +38,14 @@ button {
     padding: 8px 16px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #003366; /* Matching button color */
+    background-color: #003366;
     color: white;
     border: none;
     border-radius: 4px;
 }
 
 button:hover {
-    background-color: #001a33; /* Slightly darker on hover */
+    background-color: #001a33;
 }
 
 .quiz-container:nth-child(odd) {
@@ -43,13 +53,13 @@ button:hover {
 }
 
 
-/* Add these styles at the end of your existing style.css file */
+
 
 .firework {
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: #ff0000; /* Firework color */
+    background-color: #ff0000;
     border-radius: 50%;
     animation: explode 20s ease-out;
 }
