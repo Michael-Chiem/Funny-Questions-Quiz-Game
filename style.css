@@ -41,3 +41,26 @@ button:hover {
 .quiz-container:nth-child(odd) {
     background-color: #3333;
 }
+
+
+/* Add these styles at the end of your existing style.css file */
+
+.firework {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff0000; /* Firework color */
+    border-radius: 50%;
+    animation: explode 20s ease-out;
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(8);
+        opacity: 0;
+    }
+}
