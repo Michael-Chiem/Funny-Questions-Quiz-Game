@@ -91,6 +91,7 @@ function checkAnswer(selectedOption) {
 
 function startTimer() {
     timer = setInterval(function() {
+        if (currentQuestionIndex < quizData.length) {
         secondsPerQuestion--;
 
         if (secondsPerQuestion >= 0) {
@@ -98,8 +99,14 @@ function startTimer() {
     } else {
         clearInterval(timer);
         endQuiz();
-    }
+    } 
+} else {
+    clearInterval(timer);
+    
+}    
+
 }, 1000);
+
 }
 
 function endQuiz() {
@@ -107,6 +114,8 @@ function endQuiz() {
     showScore();
     updateHighestScores();
     displayHighScores();
+    secondsPerQuestion = 40;
+    startTimer();
 }
 
 function showScore() {
